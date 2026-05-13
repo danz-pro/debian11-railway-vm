@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     procps \
     && rm -rf /var/lib/apt/lists/*
 
-# Install ttyd (web terminal)
+# Install ttyd (web terminal) - v1.7.7
 RUN ARCH=$(uname -m) && \
     if [ "$ARCH" = "x86_64" ]; then \
         TTYD_ARCH="x86_64"; \
@@ -39,10 +39,8 @@ RUN ARCH=$(uname -m) && \
     else \
         TTYD_ARCH="x86_64"; \
     fi && \
-    wget -qO /tmp/ttyd.tar.gz "https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.${TTYD_ARCH}.tar.gz" && \
-    tar -xzf /tmp/ttyd.tar.gz -C /usr/local/bin ttyd && \
-    chmod +x /usr/local/bin/ttyd && \
-    rm -f /tmp/ttyd.tar.gz
+    wget -L -qO /usr/local/bin/ttyd "https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.${TTYD_ARCH}" && \
+    chmod +x /usr/local/bin/ttyd
 
 # Setup root password (change this!)
 RUN echo 'root:debian11' | chpasswd
