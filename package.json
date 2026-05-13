@@ -1,0 +1,13 @@
+{
+  "name": "debian11-railway-vm",
+  "version": "1.0.0",
+  "description": "Debian 11 Web Terminal - Persistent 24/7 Session",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.16.0"
+  }
+}
